@@ -40,6 +40,7 @@ public class VertXHttpServerHandler implements Handler<HttpServerRequest> {
                 doResponse(httpServerRequest,rpcResponse,jdkSerializer);
                 return;
             }
+            //todo:替换为远程服务
             Class<?> implClass = LocalRegistry.get(rpcRequest.getServiceName());
             try {
                 Method method = implClass.getMethod(rpcRequest.getMethodName(), rpcRequest.getParameterTypes());
