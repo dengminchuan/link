@@ -24,7 +24,7 @@ public class ConfigUtils {
     }
 
     /**
-     * 支持区分环境加载配置对象
+     * 支持区分环境加载配置对象,只会读取以默认前缀prefix开头
      * @param tClass
      * @param prefix
      * @param environment

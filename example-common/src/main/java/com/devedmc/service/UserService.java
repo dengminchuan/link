@@ -10,4 +10,6 @@ import com.devedmc.model.User;
 public interface UserService {
 
     User getUser(User user);
+
+    int getAge();
 }
