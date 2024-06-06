@@ -44,6 +44,12 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+<!--        mock数据生成-->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
 
 </project>

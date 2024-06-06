@@ -5,6 +5,8 @@
 //@software:IntelliJ IDEA
 package com.devedmc.proxy;
 
+import com.github.javafaker.Bool;
+import com.github.javafaker.Faker;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationHandler;
@@ -38,7 +40,7 @@ public class MockServiceProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Class<?> returnType = method.getReturnType();
-        log.info("mock invoke {}",method.getName());
+        log.info("mock invoke,method name:{}",method.getName());
         return getDefaultObject(returnType);
     }
 
@@ -48,10 +50,13 @@ public class MockServiceProxy implements InvocationHandler {
      * @return
      */
     private Object getDefaultObject(Class<?> type) {
+        Faker faker = new Faker();
         //基本类型
         if(type.isPrimitive()){
             if(type==boolean.class){
-                return false;
+                Bool bool = faker.bool();
+                log.info("mock boolean type:{}",bool);
+                return bool;
             }
             else if(type==short.class){
                 return (short)0;
@@ -61,7 +66,7 @@ public class MockServiceProxy implements InvocationHandler {
                 return 0L;
             }
         }
-        //对象类型
+        //对象类型,使用faker生成
         return null;
     }
 }
